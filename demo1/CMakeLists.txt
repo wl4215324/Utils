@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.4)
+set(CMAKE_CXX_FLAGS "-std=c++11" )
+PROJECT(test)
+
+# set(TARGET_NAME ref_test)
+# file(GLOB_RECURSE APPLICATION_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+# AUX_SOURCE_DIRECTORY(. DIR_SRCS)
+file(GLOB APPLICATION_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+add_executable(hello ${APPLICATION_SRCS})
