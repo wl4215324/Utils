@@ -99,8 +99,8 @@ namespace Timer
             ev.data.fd = this->readfd;
             std::cout << epoll_ctl(epollfd, EPOLL_CTL_ADD, this->readfd, &ev) << std::endl;
             while (this->is_running) {
-                epoll_wait(epollfd, events, 10, this->getRecentTimeout());
-                this->activeTimeout();
+                epoll_wait(epollfd, events, 10, this->getRecentTimeout()); // 找到最近的定时任务，进行定时
+                this->activeTimeout(); // 定时时间到，执行定时回调
             }
         }
 
