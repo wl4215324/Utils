@@ -15,5 +15,6 @@ set(CMAKE_BUILD_TYPE Release)
 
 add_subdirectory(ShareMemory)
 add_subdirectory(demo1)
+add_subdirectory(epollTimer-main)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_install/)
