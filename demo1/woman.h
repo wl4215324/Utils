@@ -1,10 +1,18 @@
+#ifndef WOMAN_H_
+#define WOMAN_H_
 
-class PrintNum {
-    public:
-    int& age;
+#include <iostream>
 
+using namespace std;
+
+class PrintNum 
+{
+public:
     PrintNum(int&);
     void display_num();
+
+private:
+    int& age;
 };
 
 PrintNum::PrintNum(int& input_num): age(input_num)
@@ -14,6 +22,8 @@ PrintNum::PrintNum(int& input_num): age(input_num)
 
 void PrintNum::display_num()
 {
-    cout<<"display_num: "<<age<<endl;
-    cout<<"display_num: "<<++age<<endl;
+    std::cout << "display_num: "<< age << std::endl;
+    std::cout <<"display_num: "<< ++age << std::endl;
 }
+
+#endif // WOMAN_H_

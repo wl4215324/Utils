@@ -39,7 +39,6 @@ ShareMemory::ShareMemory(const char* name, int size)
     // 通过路文件名创建
     key_t key = ftok(name, RandX);
     m_shmID = getShmID(key, size, IPC_CREAT|0755);
-
 }
 
 /**
@@ -87,7 +86,7 @@ int ShareMemory::delShm()
 int ShareMemory::getShmID(key_t key, int shmSize, int flag)
 {
     m_shmID = shmget(key, shmSize, flag);
-    if(m_shmID < 0) {
+    if (m_shmID < 0) {
         // 打印日志
         return -1; 
     }

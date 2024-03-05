@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.4)
 
 project(CXX_utils LANGUAGES CXX)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # SET(CMAKE_C_COMPILER /usr/bin/gcc)
 # SET(CMAKE_CXX_COMPILER /usr/bin/g++)
 
@@ -16,5 +18,6 @@ set(CMAKE_BUILD_TYPE Release)
 add_subdirectory(ShareMemory)
 add_subdirectory(demo1)
 add_subdirectory(epollTimer-main)
+# add_subdirectory(core_dump)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_install/)

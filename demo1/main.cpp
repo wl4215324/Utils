@@ -2,12 +2,15 @@
 #include <memory>
 #include <atomic>
 #include <functional>
+#include <iostream>
 
 #include "person.h"
+#include "callback_test.h"
+#include "copy_file.h"
 
 void foo(std::shared_ptr<int> i) {
     (*i)++;
-    std::cout<<"i: "<<*i<<endl;
+    std::cout << "i: "<< *i << std::endl;
 }
 
 class A
@@ -73,6 +76,7 @@ private:
 
 int main(int argc, char* argv[])
 {
+#if 0    
 	SignalObject3 signalObject3;
 	SlotObject3   slotObject3;
 
@@ -85,6 +89,7 @@ int main(int argc, char* argv[])
 
 	// 发射信号
 	signalObject3.emitSignal(3);
+#endif    
 
     // A a1(10);
     // A a2(a1);
@@ -133,11 +138,28 @@ int main(int argc, char* argv[])
     ps1.reset();    //放弃ps1的拥有权，引用计数的减少
     cout << ps1.use_count()<<endl;    //0
     cout << ps2.use_count()<<endl;    //1
-#endif
+
 
     std::atomic <int> test {0};
     std::cout << "test: " << test.fetch_add(1) << std::endl;
     std::cout << "test: " << test.load() << std::endl;
+
+    Callee calleeTest;
+    Caller callerTest;
+    callerTest.RegisterCallback(std::bind(&Callee::CalleeTest, &calleeTest));
+    callerTest.CallerTest();
+
+    // std::string srcFile = "./file_1.txt";
+    // std::string desFile = "./file_2.txt";
+    // CopyFile(srcFile, desFile);
+    if (IsFileEmpty(argv[1])) {
+        std::cout << "file is empty !" << argv[1] << std::endl;
+    } else {
+        std::cout << "file is not empty! " << argv[1] << std::endl;
+    }
+#endif
+
+    PersonTest();
 
     return 0;
 }
